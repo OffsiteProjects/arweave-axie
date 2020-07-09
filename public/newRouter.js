@@ -1,21 +1,21 @@
 ; (function () {
-  const routes = {
-    '/': '/index.html',
-    '/item': '/market-item.html',
-    '/land': '/market-land.html',
-    '/bundle': '/market-bundle.html',
-    '/axie': '/market-axie.html',
-    '/login': '/login.html',
-    '/profile/dashboard': '/dashboard.html',
-    '/profile/inventory/axie': '/inventory-axie.html',
-    '/profile/inventory/land': '/inventory-land.html',
-    '/profile/inventory/item': '/inventory-item.html',
-    '/profile/inventory/bundle': '/inventory-bundle.html',
-    '/profile/offer': '/offer.html',
-    '/profile/activity': '/activity.html',
-  }
+  const xhttp = new XMLHttpRequest();
+  let routes = null
+  const routePromise = new Promise((resolve, reject) => {
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText)
+        routes = JSON.parse(this.responseText)
+        resolve()
+      }
+    }
+  })
 
-  function onMount() {
+  xhttp.open('GET', 'https://api.jsonbin.io/b/5f0798c95d4af74b012979e1/latest', true)
+  xhttp.send()
+
+  async function onMount() {
+    await routePromise
     const originalPush = window.next.router.push
     window.next.router.push = function (route, { query }) {
       const currentURL = new URL(window.location.href)

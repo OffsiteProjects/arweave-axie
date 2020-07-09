@@ -15,6 +15,8 @@ pages.forEach(page => {
 
   links.forEach(link => {
     const basename = path.basename(url.parse(link).pathname)
+    const extname = path.extname(basename)
+    if (extname === '.png') return
     if (basename !== 'marketplace-website') {
       const p = path.join(__dirname, '/public/assets/', basename)
       if (fs.existsSync(p)) return
@@ -24,6 +26,17 @@ pages.forEach(page => {
     const r = new RegExp(link, 'g')
     newBody = newBody.replace(r, '/assets/' + basename)
   })
+
+  // make all scripts inline
+  {
+    const r = new RegExp('<script ', 'g')
+    newBody = newBody.replace(r, '<script inline ')
+  }
+  {
+    const r = new RegExp('as="script"', 'g')
+    newBody = newBody.replace(r, 'as="script" inline')
+  }
+
   newBody = newBody.replace('<head>', '<head><script src="newRouter.js"></script>')
   fs.writeFileSync(path.join(__dirname, '/public/', page), newBody)
 })
@@ -99,50 +112,51 @@ const sources = [
       "/marketplace-website/_next/static/chunks/styles.fa01f39638579da51f93.js",
       "/marketplace-website/_next/static/runtime/main-bf7c4af7626a3a809c58.js",
       '/marketplace-website/_next/static/chunks/32bc7a815855e394a050f2c3c97da4ecfa7c1912.7d7937faed6392d09182.js',
+      '/marketplace-website/_next/static/runtime/polyfills-648d91c5b2be116f9796.js'
     ]
   },
   {
     host: 'https://marketplace.axieinfinity.com',
     dir: '/',
     links: [
-      "/static/image/quarter-circle.png",
-      "/static/image/complete-stage.png",
-      "/static/image/empty-activities.png",
-      "/static/image/empty-bundle.png",
-      "/static/image/empty-search.png",
-      "/static/image/loom.png",
-      "/static/image/ethereum.png",
-      "/static/image/chest/chest-group.png",
-      "/static/image/origin-coin.png",
-      "/static/image/knc-token.png",
-      "/static/image/axie-knc-token.png",
-      "/static/image/dai-token.png",
-      "/static/image/arrow-right.png",
-      "/static/image/axie-dai-coin.png",
-      "/static/image/love-potion.png",
-      "/static/image/land/mystic.png",
-      "/static/image/land/forest.png",
-      "/static/image/land/savannah.png",
-      "/static/image/land/arctic.png",
-      "/static/image/empty-offer.png",
-      "/static/image/floor.png",
-      "/static/image/puff-loading.png",
-      "/static/image/meta-mask.png",
-      "/static/image/item.png",
-      "/static/image/bundle-ava.png",
-      "/static/image/banner.png",
-      "/static/image/bundle.png",
-      "/static/image/land.png",
-      "/static/image/logo.png",
-      "/static/image/puff.png",
-      "/static/image/card-material/bg-beast.png",
-      "/static/image/card-material/bg-aqua.png",
-      "/static/image/card-material/bg-bird.png",
-      "/static/image/card-material/icon-atk.png",
-      "/static/image/card-material/icon-def.png",
-      "/static/image/card-material/bg-bug.png",
-      "/static/image/card-material/bg-reptile.png",
-      "/static/image/card-material/bg-plant.png"
+      // "/static/image/quarter-circle.png",
+      // "/static/image/complete-stage.png",
+      // "/static/image/empty-activities.png",
+      // "/static/image/empty-bundle.png",
+      // "/static/image/empty-search.png",
+      // "/static/image/loom.png",
+      // "/static/image/ethereum.png",
+      // "/static/image/chest/chest-group.png",
+      // "/static/image/origin-coin.png",
+      // "/static/image/knc-token.png",
+      // "/static/image/axie-knc-token.png",
+      // "/static/image/dai-token.png",
+      // "/static/image/arrow-right.png",
+      // "/static/image/axie-dai-coin.png",
+      // "/static/image/love-potion.png",
+      // "/static/image/land/mystic.png",
+      // "/static/image/land/forest.png",
+      // "/static/image/land/savannah.png",
+      // "/static/image/land/arctic.png",
+      // "/static/image/empty-offer.png",
+      // "/static/image/floor.png",
+      // "/static/image/puff-loading.png",
+      // "/static/image/meta-mask.png",
+      // "/static/image/item.png",
+      // "/static/image/bundle-ava.png",
+      // "/static/image/banner.png",
+      // "/static/image/bundle.png",
+      // "/static/image/land.png",
+      // "/static/image/logo.png",
+      // "/static/image/puff.png",
+      // "/static/image/card-material/bg-beast.png",
+      // "/static/image/card-material/bg-aqua.png",
+      // "/static/image/card-material/bg-bird.png",
+      // "/static/image/card-material/icon-atk.png",
+      // "/static/image/card-material/icon-def.png",
+      // "/static/image/card-material/bg-bug.png",
+      // "/static/image/card-material/bg-reptile.png",
+      // "/static/image/card-material/bg-plant.png"
     ]
   }
 ]
