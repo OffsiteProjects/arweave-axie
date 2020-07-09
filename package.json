@@ -5,12 +5,15 @@
   "main": "autoArchive.js",
   "scripts": {
     "archive": "node autoArchive.js",
-    "deploy": "arweave deploy-dir public"
+    "package": "bash package.sh",
+    "minify": "node minify.js",
+    "deploy": "arweave deploy-dir minified"
   },
   "author": "",
   "license": "",
   "devDependencies": {
     "arweave": "^1.7.1",
+    "html-minifier": "^4.0.0",
     "request": "^2.88.2"
   }
 }

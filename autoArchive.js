@@ -34,6 +34,7 @@ const sources = [
     host: 'https://cdn.axieinfinity.com',
     dir: '/assets/',
     links: [
+      "/marketplace-website/_next/static/runtime/polyfills-648d91c5b2be116f9796.js",
       "/marketplace-website/_next/static/chunks/3a42bb26.244fee898b3068d48c5e.js",
       "/marketplace-website/_next/static/fuKy02qk4qVywpkwxCJcw/pages/profile/[id]/item.js",
       "/marketplace-website/_next/static/fuKy02qk4qVywpkwxCJcw/pages/profile/[id]/bundle.js",
@@ -168,7 +169,6 @@ const scripts = [
   'assets/marketplace-website/_next/static/chunks/cc8e808e6f41b1e7c3286926c5952e09790d35d1.ae49863aa812e06d1bf3.js',
   'assets/marketplace-website/_next/static/chunks/f3d3238a95930e303e2071e705acc478e7066ec9.814b17737b5052eee43a.js',
   'assets/marketplace-website/_next/static/fuKy02qk4qVywpkwxCJcw/pages/land/[col]/[row].js',
-  'assets/marketplace-website/_next/static/nP0oUBvBU4aiWbyyCUolA/pages/land/[col]/[row].js',
   'assets/marketplace-website/_next/static/chunks/3baf77e28ca09454456257c9445bd335c0449ea7.2e9703cd4e9bbe8ecee9.js'
 ]
 scripts.forEach(script => {
