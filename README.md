@@ -17,3 +17,8 @@ npm run deploy
 
 ## Manual Links in Archiver
 Not all links can be automatically detected through static analysis. `autoArchive.js` contains an array of manual links that you'll need to populate for any different app.
+
+## Dynamic Router
+`public/newRouter.js` is a monkeypatch to the `Next.js` router that will intercept routers and redirect you to the correct permaweb address. Since the address isn't known until after deploying, it fetches these mappings from a server (in this case JSONbin.io). You will need to write your own router for different frameworks.
+
+Axie used a no-javascript routing fallback with normal HTML a tags. These tags were removed due to bypassing the dynamic router.
