@@ -1,0 +1,16 @@
+{
+  "name": "axie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autoArchive.js",
+  "scripts": {
+    "archive": "node autoArchive.js",
+    "deploy": "arweave deploy-dir public"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "arweave": "^1.7.1",
+    "request": "^2.88.2"
+  }
+}
