@@ -14,3 +14,6 @@ npm run package
 npm run minify
 npm run deploy
 ```
+
+## Manual Links in Archiver
+Not all links can be automatically detected through static analysis. `autoArchive.js` contains an array of manual links that you'll need to populate for any different app.
